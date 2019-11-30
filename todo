@@ -1,0 +1,3 @@
+The program currently saves to a set filename. I'd like to prompt the user for a filename instead.
+
+This program gets the acronyms from a single file. I want to create a stronger program that gets all the files from all the docx files in a filepath.
