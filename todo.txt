@@ -4,4 +4,4 @@ This program gets the acronyms from a single file. I want to create a stronger p
 
 Does the current method of saving all text to a single string present issues with very large files? Python is a 32-bit file for most users, so it can only handle ~4.3 GB.
 
-The program currently only works for text in paragraphs. This means it won't work for tables.
+Thee program now reviews the tables in the word file as well as the paragraphs.
