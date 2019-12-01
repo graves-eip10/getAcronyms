@@ -13,6 +13,11 @@ fullText = ""
 for paragraph in doc.paragraphs:
 	fullText += paragraph.text
 
+for table in doc.tables:
+	for row in table.rows:
+		for cell in row.cells:
+			fullText += cell.text
+
 #Parse the full text of the document and return only the caps in parentheses
 capsInParentheses = re.findall('\(([A-Z]+)\)', fullText)
 
@@ -29,4 +34,4 @@ for i in range(0,len(capsInParentheses)):
 	ws.cell(row = rowIndex, column = 1).value = capsInParentheses[i]
 	rowIndex += 1
 
-acronymSink.save('myAcronyms.xlsx')
+acronymSink.save('output.xlsx')
