@@ -10,6 +10,7 @@ doc = Document(docName)
 #Prepare an accumulator for the file contents
 fullText = ""
 
+#Loop over the document paragraph and table objects, adding the text to the accumulator fullText.
 for paragraph in doc.paragraphs:
 	fullText += paragraph.text
 
@@ -21,6 +22,7 @@ for table in doc.tables:
 #Parse the full text of the document and return only the caps in parentheses
 capsInParentheses = re.findall('\(([A-Z]+)\)', fullText)
 
+#Prepare an Excel Workbook to store a table of the arconyms found.
 acronymSink = Workbook()
 ws = acronymSink.active
 ws.title = "Acronyms"
