@@ -7,20 +7,25 @@ docName = input()
 
 doc = Document(docName)
 
-#Prepare an accumulator for the file contents
-fullText = ""
+def getCapsInParentheses(myDoc):
+	#Prepare an accumulator for the file contents
+	fullText = ""
 
-#Loop over the document paragraph and table objects, adding the text to the accumulator fullText.
-for paragraph in doc.paragraphs:
-	fullText += paragraph.text
+	#Loop over the document paragraph and table objects, adding the text to the accumulator fullText.
+	for paragraph in myDoc.paragraphs:
+		fullText += paragraph.text
 
-for table in doc.tables:
-	for row in table.rows:
-		for cell in row.cells:
-			fullText += cell.text
+	for table in myDoc.tables:
+		for row in table.rows:
+			for cell in row.cells:
+				fullText += cell.text
 
-#Parse the full text of the document and return only the caps in parentheses
-capsInParentheses = re.findall('\(([A-Z]+)\)', fullText)
+	#Parse the full text of the document and return only the caps in parentheses
+	capsInParentheses = re.findall('\(([A-Z]+)\)', fullText)
+	
+	return capsInParentheses
+
+capsInParentheses = getCapsInParentheses(doc)
 
 #Prepare an Excel Workbook to store a table of the arconyms found.
 acronymSink = Workbook()
@@ -37,3 +42,4 @@ for i in range(0,len(capsInParentheses)):
 	rowIndex += 1
 
 acronymSink.save('output.xlsx')
+print("Possible acronyms written to file.")
